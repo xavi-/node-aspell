@@ -11,6 +11,7 @@ function parseLine(line) {
 
 	if(ctrl == "@") { return { type: "comment", line: line }; }
 	if(ctrl == "*") { return ok; }
+	if(ctrl == "-") { return { type: "ok", "run-together": true }; }
 	if(ctrl != "&") { return unknown; }
 
 	var parts = line.split(/,?\s/g);
@@ -23,7 +24,7 @@ function parseLine(line) {
 }
 
 module.exports = function aspell(text) {
-	var aspell = spawn("aspell", [ "-a" ]);
+	var aspell = spawn("aspell", [ "-a", "--run-together" ]);
 	var emitter = new EventEmitter();
 
 	var buffer = "";
