@@ -13,13 +13,13 @@ function parseLine(line) {
 	if(ctrl == "@") { return { type: "comment", line: line }; }
 	if(ctrl == "*") { return ok; }
 	if(ctrl == "-") { return runTogether; }
-	if(ctrl != "&") { return unknown; }
+	if(ctrl != "&" && ctrl != "#") { return unknown; }
 
 	var parts = line.split(/,?\s/g);
 	return {
 		type: "misspelling",
 		word: parts[1],
-		position: parts[3],
+		position: (ctrl == "#" ? parts[2] : parts[3]),
 		alternatives: parts.slice(4)
 	}
 }
