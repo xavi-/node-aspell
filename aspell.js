@@ -19,7 +19,7 @@ function parseLine(line) {
 	return {
 		type: "misspelling",
 		word: parts[1],
-		position: (ctrl == "#" ? parts[2] : parts[3]),
+		position: (ctrl == "#" ? parts[2] : parts[3]) | 0,
 		alternatives: parts.slice(4)
 	}
 }
