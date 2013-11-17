@@ -3,6 +3,7 @@ var EventEmitter = require("events").EventEmitter;
 
 const ok = { type: "ok" };
 const unknown = { type: "unknown" };
+const runTogether = { type: "ok", "run-together": true };
 
 function parseLine(line) {
 	if(line.length <= 0) { return null; }
@@ -11,7 +12,7 @@ function parseLine(line) {
 
 	if(ctrl == "@") { return { type: "comment", line: line }; }
 	if(ctrl == "*") { return ok; }
-	if(ctrl == "-") { return { type: "ok", "run-together": true }; }
+	if(ctrl == "-") { return runTogether; }
 	if(ctrl != "&") { return unknown; }
 
 	var parts = line.split(/,?\s/g);
