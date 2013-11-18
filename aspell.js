@@ -15,7 +15,7 @@ function parseLine(line) {
 	if(ctrl == "-") { return runTogether; }
 	if(ctrl != "&" && ctrl != "#") { return unknown; }
 
-	var parts = line.split(/,?\s/g);
+	var parts = line.split(/:?,?\s/g);
 	return {
 		type: "misspelling",
 		word: parts[1],
