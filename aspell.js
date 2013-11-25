@@ -26,7 +26,7 @@ function parseLine(line) {
 }
 
 module.exports = function aspell(text) {
-	var aspell = spawn("aspell", [ "-a", "--run-together", "--ignore-case" ]);
+	var aspell = spawn("aspell", [ "-a", "--run-together" ]);
 	var emitter = new EventEmitter();
 
 	var buffer = "";
