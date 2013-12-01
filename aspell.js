@@ -25,8 +25,8 @@ function parseLine(line) {
 	};
 }
 
-module.exports = function aspell(text) {
-	var proc = spawn("aspell", [ "-a", "--run-together" ]);
+function aspell(text) {
+	var proc = spawn("aspell", [ "-a" ].concat(aspell.args || []));
 	var emitter = new EventEmitter();
 
 	var buffer = "";
@@ -50,4 +50,7 @@ module.exports = function aspell(text) {
 	proc.stdin.end(text);
 
 	return emitter;
-};
+}
+aspell.args = [ "--run-together" ];
+
+module.exports = aspell;
