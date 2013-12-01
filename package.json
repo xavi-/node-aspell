@@ -1,0 +1,22 @@
+{
+  "name": "aspell",
+  "version": "0.1.0",
+  "description": "A module that parses aspell output.",
+  "keywords": [
+    "aspell",
+    "spell check",
+    "aspell parser"
+  ],
+  "maintainers": [
+    {
+      "name": "Xavi",
+      "email": "xavi.rmz@gmail.com",
+      "web": "http://xavi.co"
+    }
+  ],
+  "main": "./aspell.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xavi-/node-aspell.git"
+  }
+}
