@@ -45,7 +45,7 @@ function aspell(text) {
 		});
 	});
 	proc.stdout.on("end", function() {
-		emitter.emit("done");
+		emitter.emit("end");
 	});
 	proc.stdin.end(text);
 
