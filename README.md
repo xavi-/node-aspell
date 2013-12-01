@@ -43,7 +43,7 @@ emitter
 
 ## Getting node-aspell
 
-The easiest way to get simple-rate-limiter is with [npm](http://npmjs.org/):
+The easiest way to get node-aspell is with [npm](http://npmjs.org/):
 
     npm install aspell
 
