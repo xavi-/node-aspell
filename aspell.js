@@ -4,10 +4,10 @@ var EventEmitter = require("events").EventEmitter;
 const ok = { type: "ok" };
 const unknown = { type: "unknown" };
 const runTogether = { type: "ok", "run-together": true };
-const newLine = { type: "new-line" };
+const lineBreak = { type: "line-break" };
 
 function parseLine(line) {
-	if(line.length <= 0) { return newLine; }
+	if(line.length <= 0) { return lineBreak; }
 
 	var ctrl = line.charAt(0);
 
