@@ -26,14 +26,14 @@ function parseLine(line) {
 }
 
 module.exports = function aspell(text) {
-	var aspell = spawn("aspell", [ "-a", "--run-together" ]);
+	var proc = spawn("aspell", [ "-a", "--run-together" ]);
 	var emitter = new EventEmitter();
 
 	var buffer = "";
-	aspell.stderr.on("data", function(chunk) {
+	proc.stderr.on("data", function(chunk) {
 		emitter.emit("error", chunk);
 	});
-	aspell.stdout.on("data", function(chunk) {
+	proc.stdout.on("data", function(chunk) {
 		var lines = (buffer + chunk).split(/\r?\n/);
 		buffer = lines.pop();
 
@@ -44,10 +44,10 @@ module.exports = function aspell(text) {
 			emitter.emit("result", result);
 		});
 	});
-	aspell.stdout.on("end", function() {
+	proc.stdout.on("end", function() {
 		emitter.emit("done");
 	});
-	aspell.stdin.end(text);
+	proc.stdin.end(text);
 
 	return emitter;
 };
