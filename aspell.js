@@ -21,7 +21,7 @@ function parseLine(line) {
 		type: "misspelling",
 		word: parts[1],
 		position: (ctrl == "#" ? parts[2] : parts[3]) | 0,
-		alternatives: parts.slice(4)
+		alternatives: line.substring(line.indexOf(':')).split(/,\s/g)
 	};
 }
 
