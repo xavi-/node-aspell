@@ -18,5 +18,8 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/xavi-/node-aspell.git"
+  },
+  "scripts": {
+    "test": "node ./tests/run-tests.js"
   }
 }

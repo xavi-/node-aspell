@@ -26,7 +26,7 @@ function parseLine(line) {
 }
 
 function aspell(text) {
-	var proc = spawn("aspell", [ "-a" ].concat(aspell.args || []));
+	var proc = spawn(aspell.executable, [ "-a" ].concat(aspell.args || []));
 	var emitter = new EventEmitter();
 
 	var buffer = "";
@@ -52,5 +52,6 @@ function aspell(text) {
 	return emitter;
 }
 aspell.args = [ "--run-together" ];
+aspell.executable = "aspell";
 
 module.exports = aspell;
