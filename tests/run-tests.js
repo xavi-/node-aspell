@@ -16,11 +16,11 @@ const tests = [
 				position: 0,
 				alternatives: [
 					"mistake",   "misstate",
-					"miss",      "take",
-					"miss-take", "mistaken",
-					"mistakes",  "misspoke",
-					"misstep",   "mistake's",
-					"mistook",   "stake"
+					"miss take", "miss-take",
+					"mistaken",  "mistakes",
+					"misspoke",  "misstep",
+					"mistake's", "mistook",
+					"stake"
 				]
 			}
 		],
