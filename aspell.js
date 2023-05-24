@@ -1,5 +1,5 @@
-var spawn = require("child_process").spawn;
-var EventEmitter = require("events").EventEmitter;
+const spawn = require("child_process").spawn;
+const EventEmitter = require("events").EventEmitter;
 
 const ok = { type: "ok" };
 const unknown = { type: "unknown" };
@@ -9,14 +9,14 @@ const lineBreak = { type: "line-break" };
 function parseLine(line) {
 	if(line.length <= 0) { return lineBreak; }
 
-	var ctrl = line.charAt(0);
+	const ctrl = line.charAt(0);
 
 	if(ctrl == "@") { return { type: "comment", line: line }; }
 	if(ctrl == "*") { return ok; }
 	if(ctrl == "-") { return runTogether; }
 	if(ctrl != "&" && ctrl != "#") { return unknown; }
 
-	var parts = line.split(/:?,?\s/g);
+	const parts = line.split(/:?,?\s/g);
 	return {
 		type: "misspelling",
 		word: parts[1],
@@ -26,19 +26,19 @@ function parseLine(line) {
 }
 
 function aspell(text) {
-	var proc = spawn("aspell", [ "-a" ].concat(aspell.args || []));
-	var emitter = new EventEmitter();
+	const proc = spawn(aspell.executable, [ "-a" ].concat(aspell.args || []));
+	const emitter = new EventEmitter();
 
-	var buffer = "";
+	let buffer = "";
 	proc.stderr.on("data", function(chunk) {
 		emitter.emit("error", chunk);
 	});
 	proc.stdout.on("data", function(chunk) {
-		var lines = (buffer + chunk).split(/\r?\n/);
+		const lines = (buffer + chunk).split(/\r?\n/);
 		buffer = lines.pop();
 
 		lines.forEach(function(line) {
-			var result = parseLine(line);
+			const result = parseLine(line);
 			if(!result) { return; }
 
 			emitter.emit("result", result);
@@ -52,5 +52,6 @@ function aspell(text) {
 	return emitter;
 }
 aspell.args = [ "--run-together" ];
+aspell.executable = "aspell";
 
 module.exports = aspell;

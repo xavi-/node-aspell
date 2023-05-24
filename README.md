@@ -7,9 +7,9 @@ Currently works with node.js v0.10.1+ (and probably lower).
 ## Examples
 
 ```javascript
-var aspell = require("aspell");
+const aspell = require("aspell");
 
-var emitter = aspell("spelll chek me"); // Returns event emitter
+const emitter = aspell("spelll chek me"); // Returns event emitter
 
 emitter
 	.on("error", function(chunk) { /* ... contents of stderr sent here ... */ })
